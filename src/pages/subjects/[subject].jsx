@@ -1,8 +1,7 @@
-import React, { Suspense, lazy } from "react";
+import React, { Suspense, lazy, useEffect } from "react";
 
 import Header from "../../components/Header";
 import CssBaseline from "@mui/material/CssBaseline";
-import data from "../../Data/data.json";
 import { Typography } from "@mui/material";
 import Head from "next/head";
 import { useRouter } from "next/router";
@@ -15,9 +14,21 @@ const TabsPhone = lazy(() => import("./TabsPhone"));
 
 function SubjectPage() {
   // get parameters from url
-  const router = useRouter();
-  const { subject } = router.query;
 
+  // const router = useRouter();
+  // const [subjectAbbreviation, setSubjectAbbreviation] = React.useState("s");
+  // useEffect(() => {
+  //   const subject = router.query.subject;
+  //   console.log("useEffect before fun " + subject);
+  //   setSubjectAbbreviation(
+  //     fetch(`/api/subjects/${subject}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         return data;
+  //       })
+  //   );
+  //   console.log("useEffect after fun " + subjectAbbreviation);
+  // }, []);
   //   const { subjectID } = useParams();
 
   // get the subjcet from data that matches the subject param
@@ -31,7 +42,7 @@ function SubjectPage() {
   return (
     <>
       <Head>
-        <title>{subject}</title>
+        <title>{"subjectAbbreviation"}</title>
         <link
           rel="icon"
           href={
@@ -40,7 +51,7 @@ function SubjectPage() {
         />
       </Head>
       <CssBaseline />
-      <Header title={subject} isSearch={false} />
+      <Header title={"subjectAbbreviation"} isSearch={false} />
       <Suspense fallback={<div>Loading...</div>}>
         <TabsPC />
         <TabsPhone />
@@ -52,11 +63,3 @@ function SubjectPage() {
 export default SubjectPage;
 
 // function to get subject data from subject api, using subject abbreviation
-
-const getSubject = async (subjectID) => {
-  const response = await fetch(
-    `http://localhost:3000/api/subjects/${subjectID}`
-  );
-  const data = await response.json();
-  return data;
-};

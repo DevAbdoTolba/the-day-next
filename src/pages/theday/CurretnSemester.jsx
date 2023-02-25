@@ -103,8 +103,8 @@ export default function CurretnSemester({
         </Typography>
 
         <Grid container spacing={2} sx={{ marginBottom: 3 }}>
-          {subjects.map((item) => (
-            <Grid item>
+          {subjects.map((item, index) => (
+            <Grid key={index} item>
               <Chip
                 sx={{
                   padding: "0.5rem",
