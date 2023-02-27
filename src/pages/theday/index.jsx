@@ -76,7 +76,6 @@ function App() {
           overflow: "hidden",
         }}
       >
-        {" "}
         {curretnSemester !== -1 && (
           <>
             <CurretnSemester
